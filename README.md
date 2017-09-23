@@ -21,7 +21,7 @@ npm run build
 ```bash
 npm install
 npm run build
-docker build -t lifeway/kube-sleeper .
+docker build -t $ORG/$IMAGE_NAME:$TAG .
 ```
 
 ## Lint
