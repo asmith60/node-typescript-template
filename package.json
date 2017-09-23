@@ -1,0 +1,33 @@
+{
+  "name": "node-typescript-template",
+  "version": "1.0.0",
+  "description": "node typescript template",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "node_modules/typescript/bin/tsc",
+    "dev": "npm run build && npm start",
+    "dev:debug": "npm run build && npm run debug",
+    "test": "npm run build && node_modules/mocha/bin/mocha dist/**/*.spec.js",
+    "lint": "node_modules/tslint/bin/tslint -p . -c tslint.json",
+    "start": "node dist/index.js",
+    "debug": "node inspect dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asmith60/node-typescript-template.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "asmith60",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mocha": "2.2.43",
+    "@types/node": "8.0.28",
+    "mocha": "3.5.3",
+    "tslint": "5.7.0",
+    "tslint-config-airbnb": "5.3.0",
+    "typescript": "2.5.2"
+  },
+  "dependencies": {}
+}
