@@ -1,4 +1,4 @@
-export default class Environment {
+export class Environment {
   constructor() {
     return;
   }

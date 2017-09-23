@@ -16,6 +16,14 @@ npm install --production
 npm run build
 ```
 
+#### Docker
+
+```bash
+npm install
+npm run build
+docker build -t lifeway/kube-sleeper .
+```
+
 ## Lint
 
 ```bash
@@ -37,6 +45,7 @@ npm run dev:debug
 ```
 
 #### Production
+
 ```bash
 npm start
 ```

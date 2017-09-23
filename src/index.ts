@@ -1,4 +1,6 @@
-import environment from './config/environment';
+import {
+  Environment
+} from './config/environment';
 
 async function main() {
   return;
