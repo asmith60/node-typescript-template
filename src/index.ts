@@ -1,6 +1,4 @@
-import {
-  Environment
-} from './config/environment';
+import { Environment } from './config/environment';
 
 // Catch unhandling unexpected exceptions
 process.on('uncaughtException', (error: Error) => {
@@ -14,7 +12,8 @@ process.on('unhandledRejection', (reason: any) => {
   process.exit(1);
 });
 
-async function main() {
+async function main(): Promise<void> {
+  const env: Environment = new Environment();
   return;
 }
 

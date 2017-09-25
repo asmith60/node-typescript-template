@@ -17,13 +17,16 @@
     "url": "https://github.com/asmith60/node-typescript-template.git"
   },
   "keywords": [
-    "typescript"
+    "typescript",
+    "template"
   ],
   "author": "asmith60",
   "license": "ISC",
   "devDependencies": {
+    "@types/chai": "4.0.4",
     "@types/mocha": "2.2.43",
     "@types/node": "8.0.28",
+    "chai": "4.1.2",
     "mocha": "3.5.3",
     "tslint": "5.7.0",
     "tslint-config-airbnb": "5.3.0",
