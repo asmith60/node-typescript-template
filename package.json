@@ -4,13 +4,13 @@
   "description": "node typescript template",
   "main": "dist/App.js",
   "scripts": {
-    "build": "node_modules/typescript/bin/tsc",
+    "build": "node_modules/.bin/tsc",
+    "watch": "node_modules/.bin/tsc -w",
     "dev": "npm run build && npm start",
-    "dev:debug": "npm run build && npm run debug",
-    "test": "npm run build && node_modules/mocha/bin/mocha dist/**/*.spec.js",
-    "lint": "node_modules/tslint/bin/tslint -p . -c tslint.json",
-    "start": "node dist/App.js",
-    "debug": "node inspect dist/App.js"
+    "test": "npm run build && node_modules/.bin/mocha dist/**/*.spec.js",
+    "lint": "node_modules/.bin/tslint -p . -c tslint.json",
+    "debug": "node_modules/.bin/nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/App.js",
+    "start": "node dist/App.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "@types/node": "8.0.28",
     "chai": "4.1.2",
     "mocha": "3.5.3",
+    "nodemon": "1.12.1",
     "tslint": "5.7.0",
     "tslint-config-airbnb": "5.3.0",
     "typescript": "2.5.2"
