@@ -1,0 +1,59 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:9.7.1
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: npm-install
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+  unit-test:
+    docker:
+      - image: circleci/node:9.7.1
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: mkdir ./junit
+      - run:
+          environment:
+            MOCHA_FILE: junit/test-results.xml
+          command: npm run test:junit
+          when: always
+      - store_test_results:
+          path: ./junit
+      - store_artifacts:
+          path: ./junit
+
+  lint-test:
+    docker:
+      - image: circleci/node:9.7.1
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: lint
+          command: npm run lint
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - build
+      - unit-test:
+          requires:
+            - build
+      - lint-test:
+          requires:
+            - build

@@ -6,7 +6,7 @@ COPY ["package.json", "package-lock.json", "./"]
 
 RUN npm install --production
 
-COPY dist dist
+COPY dist/bundle.js dist/bundle.js
 
 ENTRYPOINT ["npm"]
 

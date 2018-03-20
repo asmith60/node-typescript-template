@@ -2,15 +2,17 @@
   "name": "node-typescript-template",
   "version": "1.0.0",
   "description": "node typescript template",
-  "main": "dist/App.js",
+  "main": "dist/bundle.js",
   "scripts": {
-    "build": "node_modules/.bin/tsc",
-    "watch": "node_modules/.bin/tsc -w",
+    "build": "node_modules/.bin/webpack-cli src/*.ts src/**/*.ts -o dist/bundle.js",
+    "build:watch": "node_modules/.bin/webpack-cli src/*.ts src/**/*.ts -o dist/bundle.js -w",
     "dev": "npm run build && npm start",
-    "test": "npm run build && node_modules/.bin/mocha dist/**/*.spec.js",
+    "test": "npm run test:build && node_modules/.bin/mocha dist/bundle.test.js",
+    "test:junit": "npm run test:build && node_modules/.bin/mocha dist/bundle.test.js --reporter mocha-junit-reporter",
+    "test:build": "node_modules/.bin/webpack-cli test/*.test.ts test/**/*.test.ts -o dist/bundle.test.js",
     "lint": "node_modules/.bin/tslint -p . -c tslint.json",
     "debug": "node_modules/.bin/nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/App.js",
-    "start": "node dist/App.js"
+    "start": "node dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -22,16 +24,30 @@
   ],
   "author": "asmith60",
   "license": "ISC",
-  "devDependencies": {
-    "@types/chai": "4.0.4",
-    "@types/mocha": "2.2.43",
-    "@types/node": "8.0.28",
-    "chai": "4.1.2",
-    "mocha": "3.5.3",
-    "nodemon": "1.12.1",
-    "tslint": "5.7.0",
-    "tslint-config-airbnb": "5.3.0",
-    "typescript": "2.5.2"
+  "dependencies": {
+    "bunyan": "1.8.12",
+    "convict": "4.0.2",
+    "source-map-support": "0.5.4"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "@types/bunyan": "1.8.4",
+    "@types/chai": "4.1.2",
+    "@types/chai-as-promised": "7.1.0",
+    "@types/convict": "4.1.1",
+    "@types/mocha": "2.2.48",
+    "@types/node": "9.4.7",
+    "@types/sinon": "4.3.0",
+    "chai": "4.1.2",
+    "chai-as-promised": "7.1.1",
+    "mocha": "3.5.0",
+    "mocha-junit-reporter": "1.17.0",
+    "sinon": "4.4.6",
+    "ts-loader": "4.0.1",
+    "tslint": "5.9.1",
+    "tslint-config-airbnb": "5.7.0",
+    "typescript": "2.7.2",
+    "webpack": "4.1.1",
+    "webpack-cli": "2.0.12",
+    "webpack-node-externals": "1.6.0"
+  }
 }
